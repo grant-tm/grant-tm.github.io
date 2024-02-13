@@ -1,0 +1,25 @@
+{
+  "name": "grant-tm.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grant-tm/grant-tm.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/grant-tm/grant-tm.github.io/issues"
+  },
+  "homepage": "https://github.com/grant-tm/grant-tm.github.io#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^8.1.2",
+    "papaparse": "^5.4.1"
+  }
+}
