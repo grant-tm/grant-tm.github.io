@@ -21,17 +21,8 @@ header {
     padding: 0 20px;
 }
 
-.graph-container {
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust column width */
-    gap: 20px; /* Adjust gap between graphs */
-}
-
-.graph {
-    background-color: #1E1E1E; /* Adjust background color as needed */
-    border: 2px solid #363636; /* Add borders for visual separation */
-    padding: 20px; /* Adjust padding inside each box */
+.forcegraph-container {
+    position: relative;
 }
 
 #dashboard {
