@@ -2,11 +2,14 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #1E1E1E;
 }
 
+/*#3BE1F0, #6F8BF4*/
+/*#3BE1F0, #6F8BF4*/
+
 header {
-    background: linear-gradient(to right, #3BE1F0, #6F8BF4);
+    background: #363636;
     color: #fff;
     padding: 20px;
     text-align: center;
@@ -18,8 +21,21 @@ header {
     padding: 0 20px;
 }
 
+.graph-container {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust column width */
+    gap: 20px; /* Adjust gap between graphs */
+}
+
+.graph {
+    background-color: #1E1E1E; /* Adjust background color as needed */
+    border: 2px solid #363636; /* Add borders for visual separation */
+    padding: 20px; /* Adjust padding inside each box */
+}
+
 #dashboard {
-    background-color: #fff;
+    background-color: #1E1E1E;
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 20px;
