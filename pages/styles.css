@@ -9,16 +9,23 @@ body {
 /*#3BE1F0, #6F8BF4*/
 
 header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
     background: #363636;
     color: #fff;
     padding: 20px;
     text-align: center;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 0 20px;
+#file-upload-button {
+    padding: 10px 15px;
+    background-color: #3b95f0;
+    color: white;
+    border-color: black;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
 .forcegraph-container {
