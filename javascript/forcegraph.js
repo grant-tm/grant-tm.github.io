@@ -1,19 +1,13 @@
-
 import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
 
-function _1(md)
-{
-    return ''
-}
-    
-function _chart(d3,data,invalidation)
+function construct_forcegraph(d3,data,invalidation)
 {
     // Specify the dimensions of the chart.
-    const width = 500;
-    const height = 500;
+    const width = 1000;
+    const height = 1000;
 
     // Specify the color scale.
-    const color = d3.scaleOrdinal(d3.schemeCategory10);
+    //const color = d3.scaleOrdinal(d3.schemeCategory10);
 
     // The force simulation mutates links and nodes, so create a copy
     // so that re-evaluating this cell produces the same result.
@@ -128,9 +122,8 @@ export default function define(runtime, observer)
         ["miserables.json", {url: "https://static.observableusercontent.com/files/31d904f6e21d42d4963ece9c8cc4fbd75efcbdc404bf511bc79906f0a1be68b5a01e935f65123670ed04e35ca8cae3c2b943f82bf8db49c5a67c85cbb58db052", mimeType: "application/json"}]
     ]);
     main.builtin("FileAttachment", runtime.fileAttachments(name => fileAttachments.get(name)));
-    main.variable(observer()).define(["md"], _1);
-    main.variable(observer("chart")).define("chart", ["d3","data","invalidation"], _chart);
-    main.variable(observer("data")).define("data", ["FileAttachment"], _data);
+    main.variable(observer()).define("chart", ["d3","data","invalidation"], construct_forcegraph);
+    main.variable("data").define("data", ["FileAttachment"], _data);
     return main;
 }
 
