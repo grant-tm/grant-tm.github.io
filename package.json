@@ -1,0 +1,29 @@
+{
+  "name": "grant-tm.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "predeloy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grant-tm/grant-tm.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/grant-tm/grant-tm.github.io/issues"
+  },
+  "homepage": "https://github.com/grant-tm/grant-tm.github.io#readme",
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
+  },
+  "dependencies": {
+    "module": "^1.2.5",
+    "mongoose": "^8.1.2",
+    "papaparse": "^5.4.1"
+  }
+}

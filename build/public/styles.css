@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1E1E1E;
+}
+
+/*#3BE1F0, #6F8BF4*/
+/*#3BE1F0, #6F8BF4*/
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: #363636;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+#file-upload-button {
+    padding: 10px 15px;
+    background-color: #3b95f0;
+    color: white;
+    border-color: black;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Hide the default file input */
+input[type="file"] {
+    display: none;
+}
+
+/* Style for custom file upload button */
+.custom-file-upload {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Style on hover */
+.custom-file-upload:hover {
+    background-color: #45a049;
+}
+
+/* Style on focus */
+.custom-file-upload:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+.forcegraph-container {
+    position: relative;
+}
+
+#dashboard {
+    background-color: #1E1E1E;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
