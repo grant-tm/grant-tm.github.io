@@ -28,6 +28,32 @@ header {
     cursor: pointer;
 }
 
+/* Hide the default file input */
+input[type="file"] {
+    display: none;
+}
+
+/* Style for custom file upload button */
+.custom-file-upload {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Style on hover */
+.custom-file-upload:hover {
+    background-color: #45a049;
+}
+
+/* Style on focus */
+.custom-file-upload:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
 .forcegraph-container {
     position: relative;
 }
