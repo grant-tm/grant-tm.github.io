@@ -1,0 +1,81 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1E1E1E;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: #363636;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+  
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/********************************************/
+/* PLAYBACK CONTROLS */
+/********************************************/
+#playback-control-panel {
+    width: 300px;
+    margin: 20px auto;
+}
+
+/* https://codepen.io/jacobcs1996/pen/geQKLJ?editors=1100 */
+#play-pause-button {
+    margin: 0;
+    padding: 0;
+    
+    --button-height: 20px;
+    --button-color: #fff;
+
+    /* play state */
+    &[playing="true"] {
+        height: 0;
+        width: 0;
+        background: none;
+        border: none;
+        border-top: var(--button-height) solid transparent;
+        border-bottom: var(--button-height) solid transparent;
+        border-left: calc(var(--button-height) * 2 * 0.86) solid var(--button-color);
+    }
+    
+    /* pause state */
+    &[playing="false"] {
+        background: var(--button-color);
+        border: none;
+        height: calc(var(--button-height) * 2);
+        width: calc(var(--button-height) * 2 * 0.86);
+    }
+}
+
+#loop-enable-button {
+    display: none;
+    color: #fff;
+}
+
+#seek-bar {
+    width: 100%;
+}
+  
+
+#dashboard {
+    background-color: #1E1E1E;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}

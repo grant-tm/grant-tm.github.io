@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <Title>MusicMaps</Title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="visualizer.css">
 </head>
 <body>
     <!--Header-->
     <header>
-        <!--Website Title-->
+        <!--Page Title-->
         <h1>Audio Visualization</h1>
         <!--Navigation-->
         <nav id="nav-section">
@@ -18,118 +18,19 @@
                 <li><a href="maps.html">Data Maps</a></li>
             </ul>
         </nav>
-        <!--Play/Pause-->
-        <button id="play-button" data-playing="false" role="switch" aria-checked="false">
-            <span>Play/Pause</span>
-        </button>
     </header>
+    <!-- Audio source -->
+    <audio id="audio-source" src="brackish.mp3"></audio>
+    <!-- Visualizer Container -->
     <div id="plot-container"></div>
-    <audio id="audioElement" src="brackish.mp3"></audio>
-    <label for="color-slider">Color</label>
-    <input type="range" id="color" name="color-slider" min="0" max="100">
-    <p>Value: <span id="sliderValue"></span></p>
-    <script type="module">
-        import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
-        import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
-    
-        // Create an AudioContext instance
-        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-
-        // Create an AnalyserNode to extract frequency data
-        const analyser = audioContext.createAnalyser();
-        analyser.fftSize = 512;
-
-        // Connect the AnalyserNode to the audio source
-        const audioElement = document.getElementById('audioElement');
-        const source = audioContext.createMediaElementSource(audioElement);
-        source.connect(analyser);
-        analyser.connect(audioContext.destination);
-        
-        const playButton = document.querySelector("button");
-        playButton.addEventListener(
-            "click", 
-            () => {
-                // Check if context is in suspended state (autoplay policy)
-                if (audioContext.state === "suspended") {
-                    audioContext.resume();
-                }
-            
-                // Play or pause track depending on state
-                if (playButton.dataset.playing === "false") {
-                    audioElement.play();
-                    playButton.dataset.playing = "true";
-                } 
-                else if (playButton.dataset.playing === "true") {
-                    audioElement.pause();
-                    playButton.dataset.playing = "false";
-                }
-            },
-            false,
-        );
-
-        audioElement.addEventListener(
-            "ended",
-            () => {
-              playButton.dataset.playing = "false";
-            },
-            false,
-        );
-
-        // Create a Uint8Array to store the frequency data
-        const bufferLength = analyser.frequencyBinCount;
-        const dataArray = new Uint8Array(bufferLength);
-        
-        var timer = 0;
-
-        // Function to update the FFT data
-        function updateFFT() {
-            analyser.getByteFrequencyData(dataArray);
-            var data = storeFFTFrame(dataArray);
-
-            timer += 1;
-            if(timer > 4){
-                updateGraph(data, history);
-                timer = 0;
-            }
-            
-            requestAnimationFrame(updateFFT);
-        }
-        updateFFT();
-        
-        function storeFFTFrame(dataArray) {
-            var frame = [];
-            var datalength = dataArray.length;
-            for (let i = 0; i < datalength; i++) {
-                frame.push({
-                    index: i, 
-                    value: Math.max(0, dataArray[i] - (80 / (0.1 * i) + 1))
-                });
-            }
-            return frame;
-        }
-
-        function updateGraph(data){
-            if(!data){return;}
-            console.log(data);
-            if(document.getElementById("plot-container").firstChild){
-                document.getElementById("plot-container").removeChild(document.getElementById("plot-container").firstChild);
-            }
-            var plot = Plot.plot({
-                x: {domain: [0, data.length * 0.66]},
-                y: {domain: [0, 256]},
-                marks: [
-                    Plot.ruleY([0]),
-                    Plot.lineY(data, {
-                        x: "index", 
-                        y: "value", 
-                        stroke: "steelblue", 
-                        fillOpacity: 0.2, 
-                        fill: "steelblue"
-                    })
-                ]
-            })
-            document.getElementById("plot-container").appendChild(plot);
-        }
-    </script>
+    <!--Playback Controls-->
+    <div id="playback-control-panel">
+        <button id="play-pause-button" playing="false" role="switch"></button>
+        <button id="loop-enable-button" class="loop_disabled">Off</button>
+        <input id="seek-bar" type="range" min="0" value="0">
+    </div>
+    <script type="module" src="js/playback_controls.js"></script>
+    <!-- Logic -->
+    <script type="module" src="js/audio_analysis.js"></script>
 </body>
 </html>
