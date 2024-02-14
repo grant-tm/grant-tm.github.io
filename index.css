@@ -16,6 +16,16 @@ header {
     text-align: center;
 }
 
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+  
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
 #play-button {
     padding: 10px 15px;
     background-color: green;
