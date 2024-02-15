@@ -14,6 +14,7 @@ header {
     color: #fff;
     padding: 20px;
     text-align: center;
+    border-bottom: 1px solid black;
 }
 
 nav ul li {
@@ -30,30 +31,42 @@ header nav ul li a {
 /* PLAYBACK CONTROLS */
 /********************************************/
 #playback-control-panel {
-    width: 300px;
+    width: 500px;
     margin: 20px auto;
+    align-items: center;
+    border: black 1px solid;
+    border-radius: 8px;
+    background-color: #363636;
+}
+
+#playback-buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8px;
+    padding: 8px;
+    margin-top: 0;
+    padding-top: 0;
 }
 
 /* https://codepen.io/jacobcs1996/pen/geQKLJ?editors=1100 */
 #play-pause-button {
-    margin: 0;
-    padding: 0;
+    margin: 10;
+    padding: 10;
     
-    --button-height: 20px;
+    --button-height: 15px;
     --button-color: #fff;
 
-    /* play state */
     &[playing="false"] {
         height: 0;
         width: 0;
         background: none;
-        border: none;
+        border: black 1px solid;
         border-top: var(--button-height) solid transparent;
         border-bottom: var(--button-height) solid transparent;
         border-left: calc(var(--button-height) * 2 * 0.86) solid var(--button-color);
     }
-    
-    /* pause state */
+
     &[playing="true"] {
         background: var(--button-color);
         border: none;
@@ -63,13 +76,21 @@ header nav ul li a {
 }
 
 #loop-enable-button {
-    display: none;
     color: #fff;
+}
+
+#seek-bar-container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    top: 8px;
 }
 
 /* https://danielstern.ca/range.css/?ref=css-tricks#/ */
 #seek-bar {
-    width: 100%;
+    width: 90%;
     margin: -0.95px 0;
     background-color: transparent;
     -webkit-appearance: none;
@@ -80,7 +101,7 @@ header nav ul li a {
 }
 
 #seek-bar::-webkit-slider-runnable-track {
-    background: #353535;
+    background: #1E1E1E;
     border: 0.9px solid #010101;
     border-radius: 25px;
     width: 100%;
@@ -97,10 +118,6 @@ header nav ul li a {
     border-radius: 50px;
     cursor: pointer;
     -webkit-appearance: none;
-}
-
-#seek-bar:focus::-webkit-slider-runnable-track {
-    background: #424242;
 }
 
 #seek-bar::-moz-range-track {

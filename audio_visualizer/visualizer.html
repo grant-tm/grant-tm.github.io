@@ -25,12 +25,16 @@
     <div id="plot-container"></div>
     <!--Playback Controls-->
     <div id="playback-control-panel">
-        <input id="seek-bar" type="range" min="0" value="0">
-        <button id="play-pause-button" playing="false" role="switch"></button>
-        <button id="loop-enable-button" class="loop_disabled">Off</button>
+        <div id="seek-bar-container">
+            <input id="seek-bar" type="range" min="0" value="0">
+        </div>
+        <div id="playback-buttons-container">
+            <button id="play-pause-button" playing="false"></button>
+            <button id="loop-enable-button" class="loop_disabled">Off</button>
+        </div>
     </div>
     <script type="module" src="js/playback_controls.js"></script>
-    <!-- Logic -->
+    <!-- Audio Processing and Visualization -->
     <script type="module" src="js/audio_analysis.js"></script>
 </body>
 </html>
