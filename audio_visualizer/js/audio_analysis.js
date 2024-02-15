@@ -41,7 +41,7 @@ function storeFFTFrame(dataArray) {
     for (let i = 0; i < datalength; i++) {
         frame.push({
             index: i, 
-            value: Math.max(0, dataArray[i] - (80 / (0.1 * i) + 1))
+            value: Math.max(0, dataArray[i] - (96 / (0.1 * (i+1))))
         });
     }
     return frame;
@@ -53,7 +53,7 @@ function updateGraph(data){
         document.getElementById("plot-container").removeChild(document.getElementById("plot-container").firstChild);
     }
     var plot = Plot.plot({
-        x: {domain: [0, data.length * 0.66]},
+        x: {domain: [0, data.length * 0.8]},
         y: {domain: [0, 256]},
         marks: [
             Plot.axisY({fill: "#1E1E1E",

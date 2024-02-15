@@ -51,32 +51,34 @@ header nav ul li a {
 
 /* https://codepen.io/jacobcs1996/pen/geQKLJ?editors=1100 */
 #play-pause-button {
-    margin: 10;
-    padding: 10;
-    
-    --button-height: 15px;
-    --button-color: #fff;
+    padding: 5px;
+    font-size:large;
+    background-color: transparent;
+}
 
-    &[playing="false"] {
-        height: 0;
-        width: 0;
-        background: none;
-        border: black 1px solid;
-        border-top: var(--button-height) solid transparent;
-        border-bottom: var(--button-height) solid transparent;
-        border-left: calc(var(--button-height) * 2 * 0.86) solid var(--button-color);
-    }
-
-    &[playing="true"] {
-        background: var(--button-color);
-        border: none;
-        height: calc(var(--button-height) * 2);
-        width: calc(var(--button-height) * 2 * 0.86);
-    }
+#play-pause-icon {
+    color: #fff;
 }
 
 #loop-enable-button {
+    padding: 5px;
+    font-size:large;
+    background-color: transparent;
+}
+
+#loop-enable-icon {
     color: #fff;
+}
+
+#volume-icon {
+    color: #fff;
+}
+
+#volume-slider {
+    width: 90%;
+    margin: 8px;
+    background-color: transparent;
+    -webkit-appearance: none;
 }
 
 #seek-bar-container {

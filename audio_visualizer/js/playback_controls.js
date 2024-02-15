@@ -6,6 +6,7 @@ import { audioContext } from './audio_analysis.js';
 // PLAY BUTTON
 //***************************************************************************/
 var play_pause_button = document.getElementById('play-pause-button');
+var play_pause_icon = document.getElementById('play-pause-icon');
 play_pause_button.addEventListener('click', function() {
     // refresh audio context if it is suspendeds
     if (audioContext.state === "suspended") {
@@ -14,12 +15,22 @@ play_pause_button.addEventListener('click', function() {
     
     // Play or pause the audio
     if (play_pause_button.getAttribute("playing") === "false") {
+        
         audioElement.play();
+        
         play_pause_button.setAttribute("playing", "true");
+
+        play_pause_icon.removeAttribute("class", "fa-solid fa-play");
+        play_pause_icon.setAttribute("class", "fa-solid fa-pause");
     } 
     else if (play_pause_button.getAttribute("playing") === "true") {
+        
         audioElement.pause();
+        
         play_pause_button.setAttribute("playing", "false");
+
+        play_pause_icon.removeAttribute("class", "fa-solid fa-pause");
+        play_pause_icon.setAttribute("class", "fa-solid fa-play");
     }
 });
 
