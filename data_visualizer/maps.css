@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1E1E1E;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: #363636;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+  
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+#play-button {
+    padding: 10px 15px;
+    background-color: green;
+    color: white;
+    border-color: black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#dashboard {
+    background-color: #1E1E1E;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
