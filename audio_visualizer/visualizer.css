@@ -67,10 +67,110 @@ header nav ul li a {
     color: #fff;
 }
 
+/* https://danielstern.ca/range.css/?ref=css-tricks#/ */
 #seek-bar {
     width: 100%;
+    margin: -0.95px 0;
+    background-color: transparent;
+    -webkit-appearance: none;
 }
   
+#seek-bar:focus {
+    outline: none;
+}
+
+#seek-bar::-webkit-slider-runnable-track {
+    background: #353535;
+    border: 0.9px solid #010101;
+    border-radius: 25px;
+    width: 100%;
+    height: 8.9px;
+    cursor: pointer;
+}
+
+#seek-bar::-webkit-slider-thumb {
+    margin-top: 0.05px;
+    width: 13px;
+    height: 7px;
+    background: #fcffff;
+    border: 1.1px solid #000000;
+    border-radius: 50px;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+#seek-bar:focus::-webkit-slider-runnable-track {
+    background: #424242;
+}
+
+#seek-bar::-moz-range-track {
+    background: #353535;
+    border: 0.9px solid #010101;
+    border-radius: 25px;
+    width: 100%;
+    height: 8.9px;
+    cursor: pointer;
+}
+
+#seek-bar::-moz-range-thumb {
+    width: 13px;
+    height: 7px;
+    background: #fcffff;
+    border: 1.1px solid #000000;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+#seek-bar::-ms-track {
+    background: transparent;
+    border-color: transparent;
+    border-width: 0 0;
+    color: transparent;
+    width: 100%;
+    height: 8.9px;
+    cursor: pointer;
+}
+
+#seek-bar::-ms-fill-lower {
+    background: #282828;
+    border: 0.9px solid #010101;
+    border-radius: 50px;
+}
+
+#seek-bar::-ms-fill-upper {
+    background: #353535;
+    border: 0.9px solid #010101;
+    border-radius: 50px;
+}
+
+#seek-bar::-ms-thumb {
+    width: 13px;
+    height: 7px;
+    background: #fcffff;
+    border: 1.1px solid #000000;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 0px;
+    /*Needed to keep the Edge thumb centred*/
+}
+
+#seek-bar:focus::-ms-fill-lower {
+    background: #353535;
+}
+
+#seek-bar:focus::-ms-fill-upper {
+    background: #424242;
+}
+
+/*TODO: Use one of the selectors from https://stackoverflow.com/a/20541859/7077589 and figure out
+how to remove the virtical space around the range input in IE*/
+@supports (-ms-ime-align:auto) {
+    /* Pre-Chromium Edge only styles, selector taken from hhttps://stackoverflow.com/a/32202953/7077589 */
+    #seek-bar {
+        margin: 0;
+        /*Edge starts the margin from the thumb, not the track as other browsers do*/
+    }
+}
 
 #dashboard {
     background-color: #1E1E1E;
