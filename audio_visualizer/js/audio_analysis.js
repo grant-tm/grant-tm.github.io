@@ -56,6 +56,12 @@ function updateGraph(data){
         x: {domain: [0, data.length * 0.66]},
         y: {domain: [0, 256]},
         marks: [
+            Plot.axisY({fill: "#1E1E1E",
+                        tickSize: 0,
+            }),
+            Plot.axisX({fill: "#1E1E1E",
+                        tickSize: 0,
+            }),
             Plot.ruleY([0]),
             Plot.lineY(data, {
                 x: "index", 
