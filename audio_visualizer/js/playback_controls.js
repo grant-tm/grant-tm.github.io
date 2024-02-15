@@ -59,11 +59,13 @@ var volume_slider = document.getElementById('volume-bar');
 var persistant_volume;
 
 volume_button.addEventListener('click', function() {
+    console.log(persistant_volume);
     if(volume_button.getAttribute('muted') === 'false'){
         set_volume('0')
     }
     else if(volume_button.getAttribute('muted') === 'true'){
         if(persistant_volume === '0'){
+            console.log('update volume');
             persistant_volume = '0.5';
         }
         set_volume(persistant_volume);
@@ -88,9 +90,13 @@ function set_volume(vol){
     }
     else {
         audio_source.muted = false;
+
         volume_button.setAttribute('muted', 'false');
         volume_slider.value = vol;
+        audio_source.volume = volume_slider.value;
+        
         persistant_volume = volume_slider.value;
+        
         if(vol < '0.5'){
             volume_icon.setAttribute('class', 'fa-solid fa-volume-low');
         }
