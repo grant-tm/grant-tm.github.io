@@ -6,6 +6,7 @@ const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
 // Create an AnalyserNode to extract frequency data
 const analyser = audioContext.createAnalyser();
+//analyser.smoothingTimeConstant = 0.75;
 analyser.fftSize = 512;
 
 // Connect the AnalyserNode to the audio source
@@ -41,7 +42,7 @@ function storeFFTFrame(dataArray) {
     for (let i = 0; i < datalength; i++) {
         frame.push({
             index: i, 
-            value: Math.max(0, dataArray[i] - (96 / (0.1 * (i+1))))
+            value: Math.max(0, dataArray[i] - (96 / (0.05 * (i+1))))
         });
     }
     return frame;
@@ -53,23 +54,17 @@ function updateGraph(data){
         document.getElementById("plot-container").removeChild(document.getElementById("plot-container").firstChild);
     }
     var plot = Plot.plot({
-        x: {domain: [0, data.length * 0.8]},
-        y: {domain: [0, 256]},
+        x: {domain: [0, data.length * 0.8], axis: null},
+        y: {domain: [0, 256], axis: null},
         marks: [
-            Plot.axisY({fill: "#1E1E1E",
-                        tickSize: 0,
-            }),
-            Plot.axisX({fill: "#1E1E1E",
-                        tickSize: 0,
-            }),
             Plot.ruleY([0]),
             Plot.lineY(data, {
                 x: "index", 
                 y: "value", 
-                stroke: "steelblue", 
+                stroke: "lightblue", 
                 fillOpacity: 0.2, 
                 fill: "steelblue"
-            })
+            }),
         ]
     })
     document.getElementById("plot-container").appendChild(plot);

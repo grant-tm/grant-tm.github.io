@@ -30,14 +30,19 @@
             <input id="seek-bar" type="range" min="0" value="0">
         </div>
         <div id="playback-buttons-container">
+            <div id="left-spacing"></div>
             <button id="play-pause-button" playing="false">
                 <i id="play-pause-icon" class="fa-solid fa-play"></i>
             </button>
             <button id="loop-enable-button" class="loop_disabled">
                 <i id="loop-enable-icon" class="fa-solid fa-repeat"></i>
             </button>
-            <i id="volume-icon" class="fa-solid fa-volume-up"></i>
-            <input id="volume-bar" type="range" min="0" max="1" step="0.01" value="0.5">
+            <div id="volume-settings">
+                <button id="volume-button" muted="false">
+                    <i id="volume-icon" class="fa-solid fa-volume-low"></i>
+                </button>
+                <input id="volume-bar" type="range" min="0" max="1" step="0.01" value="0.5">
+            </div>
         </div>
     </div>
     <script type="module" src="js/playback_controls.js"></script>
