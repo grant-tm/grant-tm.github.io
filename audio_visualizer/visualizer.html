@@ -22,12 +22,14 @@
     </header>
     <!-- Audio source -->
     <audio id="audio-source" src="Very Favorite.mp3"></audio>
+    <script type="module" src="js/audio_analysis.js"></script>
     <!-- Visualizer Container -->
     <div id="plot-container"></div>
+    <script type = "module" src="js/linegraph.js"></script>
     <!--Playback Controls-->
     <div id="playback-control-panel">
         <div id="seek-bar-container">
-            <input id="seek-bar" type="range" min="0" value="0">
+            <input id="seek-bar" type="range" min="0" value="0" step="0.1">
         </div>
         <div id="playback-buttons-container">
             <div id="left-spacing"></div>
@@ -46,7 +48,5 @@
         </div>
     </div>
     <script type="module" src="js/playback_controls.js"></script>
-    <!-- Audio Processing and Visualization -->
-    <script type="module" src="js/audio_analysis.js"></script>
 </body>
 </html>
