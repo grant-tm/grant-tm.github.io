@@ -1,74 +1,65 @@
-import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
-import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
-
 // Create an AudioContext instance
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-
-// Create an AnalyserNode to extract frequency data
-const analyser = audioContext.createAnalyser();
-//analyser.smoothingTimeConstant = 0.75;
-analyser.fftSize = 512;
-
-// Connect the AnalyserNode to the audio source
 const audioElement = document.getElementById('audio-source');
-const source = audioContext.createMediaElementSource(audioElement);
-source.connect(analyser);
-analyser.connect(audioContext.destination);
+const audioSource = audioContext.createMediaElementSource(audioElement);
 
-// Create a Uint8Array to store the frequency data
-const bufferLength = analyser.frequencyBinCount;
-const dataArray = new Uint8Array(bufferLength);
+class FFT {
+    constructor(audioContext, audioSource, parameters = {}){
+        const defaults = {
+            update: 100,
+            fft_size: 512,
+            time_smoothing: 0.5,
+            freq_smoothing: 0.5,
+            bass_trebel_bias: 0.5,
+            history_length: 1
+        };
+        
+        this.parameters = Object.assign({}, defaults, parameters);
+        
+        this.audioContext = audioContext;
+        this.audioSource = audioSource;
 
-var timer = 0;
+        this.analyzer = this.audioContext.createAnalyser();
+        this.analyzer.fftSize = this.parameters.fft_size;
+        this.analyzer.smoothingTimeConstant = this.parameters.time_smoothing;
+        
+        this.audioSource.connect(this.analyzer);
+        this.analyzer.connect(this.audioContext.destination);
 
-// Function to update the FFT data
-function updateFFT() {
-    analyser.getByteFrequencyData(dataArray);
-    var data = storeFFTFrame(dataArray);
-
-    timer += 1;
-    if(timer > 4){
-        updateGraph(data, history);
-        timer = 0;
+        this.data_frames = [];
+        this.frame = new Uint8Array(this.parameters.fft_size / 2); 
     }
-    
-    requestAnimationFrame(updateFFT);
-}
-updateFFT();
 
-function storeFFTFrame(dataArray) {
-    var frame = [];
-    var datalength = dataArray.length;
-    for (let i = 0; i < datalength; i++) {
-        frame.push({
-            index: i, 
-            value: Math.max(0, dataArray[i] - (96 / (0.05 * (i+1))))
-        });
+    performFFT() {
+        setInterval(() => {
+            // Retrieve FFT data
+            this.analyzer.getByteFrequencyData(this.frame);
+            this.storeFFT(this.frame);
+        }, this.parameters.update_interval);
     }
-    return frame;
-}
 
-function updateGraph(data){
-    if(!data){return;}
-    if(document.getElementById("plot-container").firstChild){
-        document.getElementById("plot-container").removeChild(document.getElementById("plot-container").firstChild);
+    storeFFT(fft_data) {
+        // process current frame
+        var new_frame = [];
+        new_frame.push({index: 0, value:0});
+        for (let i = 1; i < fft_data.length-1; i++) {
+            new_frame.push({
+                index: i, 
+                value: fft_data[i],
+            });
+        }
+        new_frame.push({index: fft_data.length-1, value:0});
+
+        // add current frame to history
+        if(this.data_frames.length > this.parameters.history_length){
+            this.data_frames.shift();
+        }
+        this.data_frames.push(new_frame);
     }
-    var plot = Plot.plot({
-        x: {domain: [0, data.length * 0.8], axis: null},
-        y: {domain: [0, 256], axis: null},
-        marks: [
-            Plot.ruleY([0]),
-            Plot.lineY(data, {
-                x: "index", 
-                y: "value", 
-                stroke: "lightblue", 
-                fillOpacity: 0.2, 
-                fill: "steelblue"
-            }),
-        ]
-    })
-    document.getElementById("plot-container").appendChild(plot);
+
 }
 
-export { audioElement }
 export { audioContext }
+export { audioElement }
+export { audioSource}
+export { FFT }
