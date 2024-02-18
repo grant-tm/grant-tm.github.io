@@ -26,12 +26,12 @@
         </nav>
     </header>
     <!-- Audio source -->
-    <audio id="audio-source" src="demo.mp3"></audio>
+    <audio id="audio-source" src="./assets/demo.mp3"></audio>
     <script type="module" src="js/audio_analysis.js"></script>
     <!-- Visualizer Container -->
     <div id="visualizer">
         <div id="plot-container"></div>
-        <div id="vis-knobs">
+        <div id="visualizer-control-panel">
             <div class="labeled-knob">
                 <input type="range" class="input-knob" id="update-rate-knob" value="60" min="10" max="110" step="1" data-src="./assets/Dial_White_Spanning.png" data-sprites="127" data-diameter="25"/>
                 <label class="knob-label">Frame Rate</label>
@@ -41,11 +41,24 @@
                 <div class="knob-group">
                     <div class="labeled-knob">
                         <input type="range" class="input-knob" id="freq-norm-knob" min="0" max="1" step="0.01" data-src="./assets/Dial_White_Spanning.png" data-sprites="127" data-diameter="25"/>
-                        <label class="knob-label">Freq</label>
+                        <label class="knob-label">Freq.</label>
                     </div>
                     <div class="labeled-knob">
                         <input type="range" class="input-knob" id="time-norm-knob" min="0" max="1" step="0.01" data-src="./assets/Dial_White_Spanning.png" data-sprites="127" data-diameter="25"/>
                         <label class="knob-label">Time</label>
+                    </div>
+                </div>
+            </div>
+            <div class="labeled-knob-group">
+                <label class="knob-group-label">Bias</label>
+                <div class="knob-group">
+                    <div class="labeled-knob">
+                        <input type="range" class="input-knob" id="bias-freq-knob" value="0.5" min="0" max="1" step="0.01" data-src="./assets/Dial_White_Centered.png" data-sprites="127" data-diameter="25"/>
+                        <label class="knob-label">Bass/Treb.</label>
+                    </div>
+                    <div class="labeled-knob">
+                        <input type="range" class="input-knob" id="bias-strength-knob" value="0.0" min="0" max="2" step="0.01" data-src="./assets/Dial_White_Spanning.png" data-sprites="127" data-diameter="25"/>
+                        <label class="knob-label">Strength</label>
                     </div>
                 </div>
             </div>
