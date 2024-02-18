@@ -11,6 +11,7 @@ class FFT {
             time_smoothing: 0.5,
             freq_smoothing: 0.5,
             bass_trebel_bias: 0.5,
+            bias_strength: 0.0,
             history_length: 1
         };
         
@@ -31,7 +32,7 @@ class FFT {
 
         this.interval_id = null;
 
-        this.max_smoothing_iterations = 100;
+        this.max_smoothing_iterations = 30;
     }
 
     
@@ -44,9 +45,25 @@ class FFT {
         return data;
     }
 
+
     bassTrebelBias(data) {
+        var bias = this.bass_trebel_bias;
         for(var i=1; i<data.length-1; i++){
-            data[i].value = data[i].value * (i / data.length);
+            // calculate weight according to bass/trebel bias
+            var weight = (i * (bias - 0.5)) + ((data.length / 2) * (-bias)) + (data.length / 4)
+            
+            // modulate weight by strenght
+            var weight = weight * this.bias_strength;
+            
+            // apply weight to data
+            if(data[i].value > 0){
+                data[i].value += weight;
+            }
+
+            // clamp data to 0-255 range
+            data[i].value = Math.min(255, data[i].value);
+            data[i].value = Math.max(0, data[i].value);
+            
         }
         return data;
     }
@@ -75,8 +92,9 @@ class FFT {
         new_frame.push({index: fft_data.length-1, value:0});
 
         // smooth current frame
+        new_frame = this.bassTrebelBias(new_frame);
         new_frame = this.smoothFreqs(new_frame);
-        //new_frame = this.bassTrebelBias(new_frame);
+        
 
         // add current frame to history
         if(this.data_frames.length > this.parameters.history_length){
