@@ -5,6 +5,8 @@ body {
     background-color: #1E1E1E;
 }
 
+/* HEADER */
+
 header {
     display: flex;
     justify-content: space-between;
@@ -26,6 +28,8 @@ header nav ul li a {
     color: white;
     text-decoration: none;
 }
+
+/* MAIN */
 
 #dashboard {
     background-color: #1E1E1E;
@@ -76,31 +80,42 @@ header nav ul li a {
     margin-top: 0 auto;
 }
 
-.knob-label-pair{
-    margin: 8px;
-    height: 50px;
+/* GROUP OF KNOBS */
+
+.labeled-knob-group {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 0;
+    background-color: #363636;
+    border: 3px solid black;
+    border-radius: 5px;
 }
 
-#update-rate-knob {
-    &:hover {
-        cursor: pointer;
-    }
+.knob-group-label {
+    padding: 3px;
+    
+    color: #DADADA;
+    font-size: 0.8em;
 }
 
-#freq-norm-knob:hover {
-    cursor: pointer;
+.knob-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
 }
 
-#time-norm-knob:hover {
-    cursor: pointer;
-}
+/* SINGLE KNOB */
 
-.input-knob{
-    vertical-align: middle;;
+.labeled-knob{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin: 5px;
 }
 
 .knob-label {
@@ -109,4 +124,12 @@ header nav ul li a {
     font-family: Arial, sans-serif;
     text-align: center;
     user-select: none;
+    margin: 0;
+}
+
+.input-knob{
+    vertical-align: middle;
+    &:hover {
+        cursor: pointer;
+    }
 }

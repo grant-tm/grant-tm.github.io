@@ -26,23 +26,28 @@
         </nav>
     </header>
     <!-- Audio source -->
-    <audio id="audio-source" src="Very Favorite.mp3"></audio>
+    <audio id="audio-source" src="demo.mp3"></audio>
     <script type="module" src="js/audio_analysis.js"></script>
     <!-- Visualizer Container -->
     <div id="visualizer">
         <div id="plot-container"></div>
         <div id="vis-knobs">
-            <div class="knob-label-pair">
-                <input type="range" class="input-knob" id="update-rate-knob" value="50" min="10" max="100" step="1" data-src="./Dial_White.png" data-sprites="127" data-diameter="30"/>
-                <label class="knob-label">Rate</label>
+            <div class="labeled-knob">
+                <input type="range" class="input-knob" id="update-rate-knob" value="60" min="10" max="110" step="1" data-src="./assets/Dial_White_Spanning.png" data-sprites="127" data-diameter="25"/>
+                <label class="knob-label">Frame Rate</label>
             </div>
-            <div class="knob-label-pair">
-                <input type="range" class="input-knob" id="freq-norm-knob" min="0" max="1" step="0.01" data-src="./Dial_White.png" data-sprites="127" data-diameter="30"/>
-                <label class="knob-label">Freq Norm</label>
-            </div>
-            <div class="knob-label-pair">
-                <input type="range" class="input-knob" id="time-norm-knob" min="0" max="1" step="0.01" data-src="./Dial_White.png" data-sprites="127" data-diameter="30"/>
-                <label class="knob-label">Time Norm</label>
+            <div class="labeled-knob-group">
+                <label class="knob-group-label">Normalization</label>
+                <div class="knob-group">
+                    <div class="labeled-knob">
+                        <input type="range" class="input-knob" id="freq-norm-knob" min="0" max="1" step="0.01" data-src="./assets/Dial_White_Spanning.png" data-sprites="127" data-diameter="25"/>
+                        <label class="knob-label">Freq</label>
+                    </div>
+                    <div class="labeled-knob">
+                        <input type="range" class="input-knob" id="time-norm-knob" min="0" max="1" step="0.01" data-src="./assets/Dial_White_Spanning.png" data-sprites="127" data-diameter="25"/>
+                        <label class="knob-label">Time</label>
+                    </div>
+                </div>
             </div>
             <script src="./js/input_knobs.js"></script>
         </div>
