@@ -3,14 +3,14 @@
 import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
 import {audioContext, audioSource, FFT} from "./audio_analysis.js";
 
-const fft = new FFT(audioContext, audioSource, {
-    update_interval: 50,
-    fft_size: 512,
-    time_smoothing: 0.5,
-    freq_smoothing: 0.5,
-    bass_trebel_bias: 0.5,
-    history_length: 1
-});
+const fft = new FFT(audioContext, audioSource, {});
+fft.update_interval = 50,
+fft.fft_size = 512,
+fft.time_smoothing = 0.5,
+fft.freq_smoothing = 0.5,
+fft.bass_trebel_bias = 0.5,
+fft.history_length = 1
+
 fft.performFFT();
 
 function updateGraph(data){
@@ -35,6 +35,27 @@ function updateGraph(data){
     document.getElementById("plot-container").appendChild(plot);
 }
 
-setInterval(() => {
-    updateGraph(fft.data_frames[0]);
-}, fft.update_interval);
+function renderGraph(){
+    return setInterval(() => {
+        updateGraph(fft.data_frames[0]);
+    }, fft.update_interval);
+}
+var graph_interval = renderGraph(fft.update_interval);
+
+var update_rate_knob = document.getElementById("update-rate-knob");
+update_rate_knob.addEventListener("input", function(){
+    fft.update_interval = this.value;
+    fft.performFFT();
+    clearInterval(graph_interval);
+    graph_interval = renderGraph();
+});
+
+var freq_smoothing_knob = document.getElementById("freq-norm-knob");
+freq_smoothing_knob.addEventListener("input", function(){
+    fft.freq_smoothing = this.value;
+});
+
+var time_smoothing_knob = document.getElementById("time-norm-knob");
+    time_smoothing_knob.addEventListener("input", function(){
+    fft.setTimeSmoothing(this.value);
+});
