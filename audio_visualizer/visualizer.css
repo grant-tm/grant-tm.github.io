@@ -85,8 +85,10 @@ header nav ul li a {
     align-items: center;
 }
 
-#update-rate-knob:hover {
-    cursor: pointer;
+#update-rate-knob {
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 #freq-norm-knob:hover {
