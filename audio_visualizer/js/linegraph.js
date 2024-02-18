@@ -3,23 +3,30 @@
 import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
 import {audioContext, audioSource, FFT} from "./audio_analysis.js";
 
+//****************************************************************************
+// DATA COLLECTION / PROCESSING
+//****************************************************************************
 const fft = new FFT(audioContext, audioSource, {});
 fft.update_interval = 50,
 fft.fft_size = 512,
 fft.time_smoothing = 0.5,
 fft.freq_smoothing = 0.5,
 fft.bass_trebel_bias = 0.5,
+fft.bias_strength = 1.0,
 fft.history_length = 1
 
 fft.performFFT();
 
+//****************************************************************************
+// DATA VISUALIZATION
+//****************************************************************************
 function updateGraph(data){
     if(!data){return;}
     if(document.getElementById("plot-container").firstChild){
         document.getElementById("plot-container").removeChild(document.getElementById("plot-container").firstChild);
     }
     var plot = Plot.plot({
-        x: {domain: [0, data.length * 0.8], axis: null},
+        x: {domain: [0, data.length], axis: null},
         y: {domain: [0, 256], axis: null},
         marks: [
             Plot.ruleY([0]),
@@ -42,6 +49,9 @@ function renderGraph(){
 }
 var graph_interval = renderGraph(fft.update_interval);
 
+//****************************************************************************
+// CONTROL SURFACES
+//****************************************************************************
 var update_rate_knob = document.getElementById("update-rate-knob");
 update_rate_knob.addEventListener("input", function(){
     var interval = 110 - this.value;
@@ -57,6 +67,16 @@ freq_smoothing_knob.addEventListener("input", function(){
 });
 
 var time_smoothing_knob = document.getElementById("time-norm-knob");
-    time_smoothing_knob.addEventListener("input", function(){
+time_smoothing_knob.addEventListener("input", function(){
     fft.setTimeSmoothing(this.value);
+});
+
+var bias_freq_knob = document.getElementById("bias-freq-knob");
+bias_freq_knob.addEventListener("input", function(){
+    fft.bass_trebel_bias = this.value;
+});
+
+var bias_strength_knob = document.getElementById("bias-strength-knob");
+bias_strength_knob.addEventListener("input", function(){
+    fft.bias_strength = this.value;
 });
