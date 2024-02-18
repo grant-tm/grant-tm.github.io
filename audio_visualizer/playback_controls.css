@@ -95,11 +95,11 @@
     -webkit-appearance: none;
 }
   
-input[type=range]:focus {
+input[class="slider"]:focus {
     outline: none;
 }
 
-input[type=range]::-webkit-slider-runnable-track {
+input[class="slider"]::-webkit-slider-runnable-track {
     background: #1E1E1E;
     border: 0.9px solid #010101;
     border-radius: 25px;
@@ -108,7 +108,7 @@ input[type=range]::-webkit-slider-runnable-track {
     cursor: pointer;
 }
 
-input[type=range]::-webkit-slider-thumb {
+input[class="slider"]::-webkit-slider-thumb {
     margin-top: 0.05px;
     width: 13px;
     height: 7px;
@@ -119,7 +119,7 @@ input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
 }
 
-input[type=range]::-moz-range-track {
+input[class="slider"]::-moz-range-track {
     background: #353535;
     border: 0.9px solid #010101;
     border-radius: 25px;
@@ -128,7 +128,7 @@ input[type=range]::-moz-range-track {
     cursor: pointer;
 }
 
-input[type=range]::-moz-range-thumb {
+input[class="slider"]::-moz-range-thumb {
     width: 13px;
     height: 7px;
     background: #fcffff;
@@ -137,7 +137,7 @@ input[type=range]::-moz-range-thumb {
     cursor: pointer;
 }
 
-input[type=range]::-ms-track {
+input[class="slider"]::-ms-track {
     background: transparent;
     border-color: transparent;
     border-width: 0 0;
@@ -147,19 +147,19 @@ input[type=range]::-ms-track {
     cursor: pointer;
 }
 
-input[type=range]::-ms-fill-lower {
+input[class="slider"]::-ms-fill-lower {
     background: #282828;
     border: 0.9px solid #010101;
     border-radius: 50px;
 }
 
-input[type=range]::-ms-fill-upper {
+input[class="slider"]::-ms-fill-upper {
     background: #353535;
     border: 0.9px solid #010101;
     border-radius: 50px;
 }
 
-input[type=range]::-ms-thumb {
+input[class="slider"]::-ms-thumb {
     width: 13px;
     height: 7px;
     background: #fcffff;
@@ -170,11 +170,11 @@ input[type=range]::-ms-thumb {
     /*Needed to keep the Edge thumb centred*/
 }
 
-input[type=range]:focus::-ms-fill-lower {
+input[class="slider"]:focus::-ms-fill-lower {
     background: #353535;
 }
 
-input[type=range]:focus::-ms-fill-upper {
+input[class="slider"]:focus::-ms-fill-upper {
     background: #424242;
 }
 
@@ -182,7 +182,7 @@ input[type=range]:focus::-ms-fill-upper {
 how to remove the virtical space around the range input in IE*/
 @supports (-ms-ime-align:auto) {
     /* Pre-Chromium Edge only styles, selector taken from hhttps://stackoverflow.com/a/32202953/7077589 */
-    input[type=range] {
+    input[class="slider"] {
         margin: 0;
         /*Edge starts the margin from the thumb, not the track as other browsers do*/
     }
