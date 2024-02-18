@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="playback_controls.css">
     <!--Icons-->
     <script src="https://kit.fontawesome.com/701d96b6b0.js" crossorigin="anonymous"></script>
+    <!--<script type="module" src="./js/input_knobs.js"></script>-->
+    <script src="https://raw.githubusercontent.com/jherrm/knobs/main/Knob.js"></script>
 </head>
 <body>
     <!--Header-->
@@ -27,12 +29,29 @@
     <audio id="audio-source" src="Very Favorite.mp3"></audio>
     <script type="module" src="js/audio_analysis.js"></script>
     <!-- Visualizer Container -->
-    <div id="plot-container"></div>
-    <script type = "module" src="js/linegraph.js"></script>
+    <div id="visualizer">
+        <div id="plot-container"></div>
+        <div id="vis-knobs">
+            <div class="knob-label-pair">
+                <input type="range" class="input-knob" id="update-rate-knob" data-src="./Dial_White.png" data-sprites="127" data-diameter="30"/>
+                <label class="knob-label">Rate</label>
+            </div>
+            <div class="knob-label-pair">
+                <input type="range" class="input-knob" id="freq-norm-knob" data-src="./Dial_White.png" data-sprites="127" data-diameter="30"/>
+                <label class="knob-label">Freq Norm</label>
+            </div>
+            <div class="knob-label-pair">
+                <input type="range" class="input-knob" id="time-norm-knob" data-src="./Dial_White.png" data-sprites="127" data-diameter="30"/>
+                <label class="knob-label">Time Norm</label>
+            </div>
+            <script src="./js/input_knobs.js"></script>
+        </div>
+    </div>
+    <!--<script type = "module" src="js/linegraph.js"></script>-->
     <!--Playback Controls-->
     <div id="playback-control-panel">
         <div id="seek-bar-container">
-            <input id="seek-bar" type="range" min="0" value="0" step="0.1">
+            <input id="seek-bar" type="range" class="slider" min="0" value="0" step="0.1">
         </div>
         <div id="playback-buttons-container">
             <div id="left-spacing"></div>
@@ -46,7 +65,7 @@
                 <button id="volume-button" muted="false">
                     <i id="volume-icon" class="fa-solid fa-volume-low"></i>
                 </button>
-                <input id="volume-bar" type="range" min="0" max="1" step="0.01" value="0.5">
+                <input id="volume-bar" type="range" class="slider" min="0" max="1" step="0.01" value="0.5">
             </div>
         </div>
     </div>

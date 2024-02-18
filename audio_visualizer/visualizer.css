@@ -27,15 +27,84 @@ header nav ul li a {
     text-decoration: none;
 }
 
-#plot-container {
-    display: flex;
-    justify-content: center;
-}
-
 #dashboard {
     background-color: #1E1E1E;
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 20px;
     margin-bottom: 20px;
+}
+
+#visualizer {
+    width: 700px;
+    height: 400px;
+
+    margin: 0 auto;
+    padding: 10px;
+    margin-top: 20px;
+    position: relative;
+    
+    border: #464646 1px solid;
+    border-radius: 8px;
+    background-color: #363636;
+
+    align-items: center;
+}
+
+#plot-container {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    
+    width: 95%;
+    height: 85%;
+    
+    border: #464646 1px solid;
+    border-radius: 8px;
+    background-color: #1E1E1E;
+
+    display: flex;
+
+}
+
+.plot-d6a7b5{
+    position: relative;
+}
+
+#vis-knobs {
+    display: flex;
+    margin-top: 0 auto;
+}
+
+.knob-label-pair{
+    margin: 8px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#update-rate-knob:hover {
+    cursor: pointer;
+}
+
+#freq-norm-knob:hover {
+    cursor: pointer;
+}
+
+#time-norm-knob:hover {
+    cursor: pointer;
+}
+
+.input-knob{
+    vertical-align: middle;;
+}
+
+.knob-label {
+    color: #DADADA;
+    font-size: 0.8em;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    user-select: none;
 }
