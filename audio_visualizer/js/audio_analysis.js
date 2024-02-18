@@ -31,7 +31,7 @@ class FFT {
 
         this.interval_id = null;
 
-        this.max_smoothing_iterations = 10;
+        this.max_smoothing_iterations = 100;
     }
 
     
@@ -40,6 +40,13 @@ class FFT {
             for(var i=1; i<data.length-1; i++){
                 data[i].value = (data[i-1].value + data[i].value + data[i+1].value) / 3;
             }
+        }
+        return data;
+    }
+
+    bassTrebelBias(data) {
+        for(var i=1; i<data.length-1; i++){
+            data[i].value = data[i].value * (i / data.length);
         }
         return data;
     }
@@ -69,6 +76,7 @@ class FFT {
 
         // smooth current frame
         new_frame = this.smoothFreqs(new_frame);
+        //new_frame = this.bassTrebelBias(new_frame);
 
         // add current frame to history
         if(this.data_frames.length > this.parameters.history_length){

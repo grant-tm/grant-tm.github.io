@@ -44,7 +44,8 @@ var graph_interval = renderGraph(fft.update_interval);
 
 var update_rate_knob = document.getElementById("update-rate-knob");
 update_rate_knob.addEventListener("input", function(){
-    fft.update_interval = this.value;
+    var interval = 110 - this.value;
+    fft.update_interval = interval;
     fft.performFFT();
     clearInterval(graph_interval);
     graph_interval = renderGraph();
