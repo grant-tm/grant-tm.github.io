@@ -28,7 +28,7 @@
     <!-- Audio source -->
     <audio id="audio-source" src="./assets/66.wav"></audio>
     <script type="module" src="js/audio_analysis.js"></script>
-    <!-- Visualizer Container -->
+    <!-- Visualizer -->
     <div id="visualizer">
         <div id="plot-container"></div>
         <div id="visualizer-control-panel">
@@ -69,7 +69,17 @@
     <!--Playback Controls-->
     <div id="playback-control-panel">
         <div id="seek-bar-container">
-            <input id="seek-bar" type="range" class="slider" min="0" value="0" step="0.1">
+            <div id="file-info-container">
+                <div id="file-info-spacer"></div>
+                <label id="audio-file-name">Song Name</label>
+                <button id="file-upload-button">
+                    <i id="file-upload-icon" class="fa-solid fa-arrow-up-from-bracket"></i>
+                </button>
+            </div>
+            <div id="seek-bar-and-time">
+                <input id="seek-bar" type="range" class="slider" min="0" value="0" step="0.1">
+                <label id="time-display">0:00</label>
+            </div>        
         </div>
         <div id="playback-buttons-container">
             <div id="left-spacing"></div>

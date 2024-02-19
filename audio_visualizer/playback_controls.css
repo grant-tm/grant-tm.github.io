@@ -26,20 +26,26 @@
     font-size: 1.5em;
     background-color: transparent;
     border: none;
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 #play-pause-icon {
-    color: #fff;
+    color: #DADADA;
 }
 
 #loop-enable-button {
     font-size: 1.3em;
     background-color: transparent;
     border: none;
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 #loop-enable-icon {
-    color: #fff;
+    color: #DADADA;
 }
 
 #left-spacing {
@@ -64,10 +70,13 @@
     font-size: 1em;
     background-color: transparent;
     border: none;
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 #volume-icon {
-    color: #fff;
+    color: #DADADA;
 }
 
 #volume-bar {
@@ -80,11 +89,63 @@
 
 #seek-bar-container {
     display: flex;
+    flex-direction: column;
+
     position: relative;
     justify-content: center;
     align-items: center;
-    margin: 20px;
+    margin: 5px;
     top: 8px;
+}
+
+#seek-bar-and-time {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 90%
+}
+
+#file-info-container {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#file-info-spacer {
+    width: 10;
+}
+
+#audio-file-name {
+    color: #888888;
+    font-size: 0.8em;
+}
+
+#file-upload-button {
+    color: #363636;
+    background-color: #363636;
+    border: none;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#file-upload-icon {
+    color: #DADADA;
+    background-color: #363636;
+}
+
+#spacer {
+    width: 8px;
+}
+
+#time-display {
+    color: #888888;
+    font-size: 0.8em;
+    width: 8px;
+    margin: 10px;
 }
 
 /* https://danielstern.ca/range.css/?ref=css-tricks#/ */

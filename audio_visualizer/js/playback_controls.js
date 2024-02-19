@@ -109,14 +109,30 @@ function set_volume(vol){
 //***************************************************************************/
 // SEEK BAR
 //***************************************************************************/
+function toMMSS(string) {
+    var sec_num = parseInt(string, 10); // don't forget the second param
+    var minutes = Math.floor(sec_num / 60);
+    var seconds = sec_num - (minutes * 60);
+
+    if (minutes < 10) {minutes = minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    return minutes+':'+seconds;
+}
+
 var seek_bar = document.getElementById('seek-bar');
+var time_display = document.getElementById('time-display');
 audio_source.addEventListener('timeupdate', function() {
     var current_time = audio_source.currentTime;
     var duration = audio_source.duration;
     seek_bar.value = (current_time / duration) * 100;
+    time_display.textContent = toMMSS(current_time);
 });
 
 seek_bar.addEventListener('input', function() {
     var seek = audio_source.duration * (seek_bar.value / 100);
     audio_source.currentTime = seek;
+    time_display.textContent = toMMSS(audio_source.currentTime.toMMSS());
+    //console.log("time: ", audio_source.currentTime);
 });
+
+
