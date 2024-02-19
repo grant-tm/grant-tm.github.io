@@ -8,11 +8,11 @@ import {audioContext, audioSource, FFT} from "./audio_analysis.js";
 //****************************************************************************
 const fft = new FFT(audioContext, audioSource, {});
 fft.update_interval = 50;
-fft.fft_size = 512;
+fft.fft_size = 2048;
 fft.time_smoothing = 0.5;
 fft.freq_smoothing = 0.5;
-fft.bass_trebel_bias = 0.5;
-fft.bias_strength = 1.0;
+fft.bass_trebel_bias = 0.66;
+fft.bias_strength = 0.5;
 fft.gain = 0;
 fft.history_length = 1;
 
