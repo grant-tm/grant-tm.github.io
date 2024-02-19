@@ -7,7 +7,7 @@ class FFT {
     constructor(audioContext, audioSource, parameters = {}){
         const defaults = {
             update_interval: 50,
-            fft_size: 512,
+            fft_size: 2048,
             gain: 0,
             time_smoothing: 0.5,
             freq_smoothing: 0.5,
@@ -33,7 +33,7 @@ class FFT {
 
         this.interval_id = null;
 
-        this.max_smoothing_iterations = 30;
+        this.max_smoothing_iterations = 100;
     }
 
     smoothFreqs(data){
