@@ -8,6 +8,7 @@ class FFT {
         const defaults = {
             update_interval: 50,
             fft_size: 512,
+            gain: 0,
             time_smoothing: 0.5,
             freq_smoothing: 0.5,
             bass_trebel_bias: 0.5,
@@ -35,7 +36,6 @@ class FFT {
         this.max_smoothing_iterations = 30;
     }
 
-    
     smoothFreqs(data){
         for(var j=0; j<(this.max_smoothing_iterations * this.freq_smoothing); j++){
             for(var i=1; i<data.length-1; i++){
@@ -44,7 +44,6 @@ class FFT {
         }
         return data;
     }
-
 
     bassTrebelBias(data) {
         var bias = this.bass_trebel_bias;
