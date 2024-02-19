@@ -132,6 +132,10 @@
     }
 }
 
+#file-input {
+    display: none;
+}
+
 #file-upload-icon {
     color: #DADADA;
     background-color: #363636;

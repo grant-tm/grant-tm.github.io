@@ -131,8 +131,34 @@ audio_source.addEventListener('timeupdate', function() {
 seek_bar.addEventListener('input', function() {
     var seek = audio_source.duration * (seek_bar.value / 100);
     audio_source.currentTime = seek;
-    time_display.textContent = toMMSS(audio_source.currentTime.toMMSS());
+    //time_display.textContent = toMMSS(audio_source.currentTime.toMMSS());
     //console.log("time: ", audio_source.currentTime);
 });
 
+//***************************************************************************/
+// FILE UPLOAD
+//***************************************************************************/
+var audio_file_name = document.getElementById('audio-file-name');
 
+function handleFiles(event) {
+    var files = event.target.files;
+    var audio_source = document.getElementById("audio-source")
+    audio_source.setAttribute("src", URL.createObjectURL(files[0]));
+    audio_source.load();
+    audio_file_name.textContent = files[0].name;
+
+    audioElement.pause();
+    
+    play_pause_button.setAttribute("playing", "false");
+    play_pause_icon.removeAttribute("class", "fa-solid fa-pause");
+    play_pause_icon.setAttribute("class", "fa-solid fa-play");
+
+    seek_bar.value = 0;
+}
+
+var file_input = document.getElementById("file-input")
+var file_upload_button = document.getElementById("file-upload-button");
+file_upload_button.addEventListener("click", function() {
+    file_input.click();
+    file_input.addEventListener("change", handleFiles, false);
+});
