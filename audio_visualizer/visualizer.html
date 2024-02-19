@@ -26,16 +26,12 @@
         </nav>
     </header>
     <!-- Audio source -->
-    <audio id="audio-source" src="./assets/demo.mp3"></audio>
+    <audio id="audio-source" src="./assets/66.wav"></audio>
     <script type="module" src="js/audio_analysis.js"></script>
     <!-- Visualizer Container -->
     <div id="visualizer">
         <div id="plot-container"></div>
         <div id="visualizer-control-panel">
-            <div class="labeled-knob">
-                <input type="range" class="input-knob" id="update-rate-knob" value="60" min="10" max="110" step="1" data-src="./assets/Dial_White_Spanning.png" data-sprites="127" data-diameter="25"/>
-                <label class="knob-label">Frame Rate</label>
-            </div>
             <div class="labeled-knob-group">
                 <label class="knob-group-label">Normalization</label>
                 <div class="knob-group">
@@ -61,6 +57,10 @@
                         <label class="knob-label">Strength</label>
                     </div>
                 </div>
+            </div>
+            <div class="labeled-knob">
+                <input type="range" class="input-knob" id="update-rate-knob" value="60" min="10" max="110" step="1" data-src="./assets/Dial_White_Spanning.png" data-sprites="127" data-diameter="25"/>
+                <label class="knob-label">Frame Rate</label>
             </div>
             <script src="./js/input_knobs.js"></script>
         </div>
