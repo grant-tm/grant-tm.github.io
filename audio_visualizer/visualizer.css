@@ -60,6 +60,7 @@ header nav ul li a {
 }
 
 #plot-container {
+    height: 300px;
     margin: 5px;
     padding: 0px;
     
