@@ -37,6 +37,7 @@ play_pause_button.addEventListener('click', function() {
 //***************************************************************************/
 // LOOP BUTTON
 //***************************************************************************/
+/*
 var loop_enable_button = document.getElementById('loop-enable-button');
 loop_enable_button.addEventListener('click', function() {
     if (loop_enabled) {
@@ -48,7 +49,7 @@ loop_enable_button.addEventListener('click', function() {
     }
     loop_enabled = !loop_enabled;
 });
-
+*/
 //***************************************************************************/
 // VOLUME SLIDER
 //***************************************************************************/
