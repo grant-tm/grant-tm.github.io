@@ -41,7 +41,7 @@ class FFT {
     // FREQUENCY SMOOTHING FUNCTIONS
     //************************************************************************
     iterative_smoothing(data){
-        var max_iterations = 50;
+        var max_iterations = 100;
         var iterations = max_iterations * this.freq_smoothing;
         for(var j=0; j<iterations; j++){
             for(var i=1; i<data.length-1; i++){
