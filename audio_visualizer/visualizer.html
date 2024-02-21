@@ -26,7 +26,7 @@
         </nav>
     </header>
     <!-- Audio source -->
-    <audio id="audio-source" src="./assets/66.wav"></audio>
+    <audio id="audio-source" src="./assets/lostkidsgetmoney.mp3"></audio>
     <script type="module" src="js/audio_analysis.js"></script>
     <!-- Visualizer -->
     <div id="visualizer">
@@ -36,11 +36,11 @@
                 <label class="knob-group-label">Normalization</label>
                 <div class="knob-group">
                     <div class="labeled-knob">
-                        <input type="range" class="input-knob" id="freq-norm-knob" min="0" max="1" step="0.01" data-src="./assets/Dial_White_Spanning.png" data-sprites="127" data-diameter="25"/>
+                        <input type="range" class="input-knob" id="freq-norm-knob" value="0.66" min="0" max="1" step="0.01" data-src="./assets/Dial_White_Spanning.png" data-sprites="127" data-diameter="25"/>
                         <label class="knob-label">Freq.</label>
                     </div>
                     <div class="labeled-knob">
-                        <input type="range" class="input-knob" id="time-norm-knob" min="0.1" max="0.9" step="0.01" data-src="./assets/Dial_White_Spanning.png" data-sprites="127" data-diameter="25"/>
+                        <input type="range" class="input-knob" id="time-norm-knob" value="0.33" min="0.1" max="0.9" step="0.01" data-src="./assets/Dial_White_Spanning.png" data-sprites="127" data-diameter="25"/>
                         <label class="knob-label">Time</label>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                         <label class="knob-label">Bass/Treb.</label>
                     </div>
                     <div class="labeled-knob">
-                        <input type="range" class="input-knob" id="bias-strength-knob" value="0.5" min="0" max="2" step="0.01" data-src="./assets/Dial_White_Spanning.png" data-sprites="127" data-diameter="25"/>
+                        <input type="range" class="input-knob" id="bias-strength-knob" value="0.25" min="0" max="2" step="0.01" data-src="./assets/Dial_White_Spanning.png" data-sprites="127" data-diameter="25"/>
                         <label class="knob-label">Strength</label>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
         <div id="seek-bar-container">
             <div id="file-info-container">
                 <div id="file-info-spacer"></div>
-                <label id="audio-file-name">Demo.wav</label>
+                <label id="audio-file-name">Demo.mp3</label>
                 <button id="file-upload-button">
                     <input id="file-input" type="file" accept="audio/*">
                     <i id="file-upload-icon" class="fa-solid fa-arrow-up-from-bracket"></i>

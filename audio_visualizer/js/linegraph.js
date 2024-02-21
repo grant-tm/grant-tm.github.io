@@ -10,12 +10,12 @@ var plot_container = document.getElementById("plot-container");
 // DATA COLLECTION / PROCESSING
 //****************************************************************************
 const fft = new FFT({
-    fft_size: 2048,
+    fft_size: 4096,
     update_interval: 50,
-    time_smoothing: 0.5,
-    freq_smoothing: 0.1,
+    time_smoothing: 0.33,
+    freq_smoothing: 0.66,
     bass_trebel_bias: 0.66,
-    bias_strength: 0.5,
+    bias_strength: 0.25,
     history_length: 1,
 });
 
