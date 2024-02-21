@@ -58,6 +58,21 @@
                     </div>
                 </div>
             </div>
+            <!--
+            <div class="labeled-knob-group">
+                <label class="knob-group-label">History</label>
+                <div class="knob-group">
+                    <div class="labeled-knob">
+                        <input type="range" class="input-knob" id="history-length-knob" value="4" min="1" max="10" step="1" data-src="./assets/Dial_White_Spanning.png" data-sprites="127" data-diameter="25"/>
+                        <label class="knob-label">Length</label>
+                    </div>
+                    <div class="labeled-knob">
+                        <input type="range" class="input-knob" id="facet-overlap-knob" value="150" min="0" max="250" step="1" data-src="./assets/Dial_White_Spanning.png" data-sprites="127" data-diameter="25"/>
+                        <label class="knob-label">Overlap</label>
+                    </div>
+                </div>
+            </div>
+            -->
             <div class="labeled-knob">
                 <input type="range" class="input-knob" id="update-rate-knob" value="60" min="10" max="110" step="1" data-src="./assets/Dial_White_Spanning.png" data-sprites="127" data-diameter="25"/>
                 <label class="knob-label">Frame Rate</label>
@@ -65,7 +80,7 @@
             <script src="./js/input_knobs.js"></script>
         </div>
     </div>
-    <script type = "module" src="js/ridgeline.js"></script>
+    <script type = "module" src="js/linegraph.js"></script>
     <!--Playback Controls-->
     <div id="playback-control-panel">
         <div id="seek-bar-container">
@@ -87,9 +102,11 @@
             <button id="play-pause-button" playing="false">
                 <i id="play-pause-icon" class="fa-solid fa-play"></i>
             </button>
+            <!--
             <button id="loop-enable-button" class="loop_disabled">
                 <i id="loop-enable-icon" class="fa-solid fa-repeat"></i>
             </button>
+            -->
             <div id="volume-settings">
                 <button id="volume-button" muted="false">
                     <i id="volume-icon" class="fa-solid fa-volume-low"></i>
