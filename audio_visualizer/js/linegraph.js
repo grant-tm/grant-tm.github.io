@@ -1,32 +1,34 @@
 /* visualizer parameters */
 //import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
-import {audioContext, audioSource, FFT} from "./audio_analysis.js";
+import {FFT} from "./audio_analysis.js";
+
+var plot_container = document.getElementById("plot-container");
+
 
 //****************************************************************************
 // DATA COLLECTION / PROCESSING
 //****************************************************************************
-const fft = new FFT(audioContext, audioSource, {});
-fft.update_interval = 50;
-fft.fft_size = 2048;
-fft.time_smoothing = 0.5;
-fft.freq_smoothing = 0.5;
-fft.bass_trebel_bias = 0.66;
-fft.bias_strength = 0.5;
-fft.gain = 0;
-fft.history_length = 1;
+const fft = new FFT({
+    fft_size: 2048,
+    update_interval: 50,
+    time_smoothing: 0.5,
+    freq_smoothing: 0.1,
+    bass_trebel_bias: 0.66,
+    bias_strength: 0.5,
+    history_length: 1,
+});
 
-fft.performFFT();
+fft.perform_fft();
 
 //****************************************************************************
 // DATA VISUALIZATION
 //****************************************************************************
 function updateGraph(data){
     if(!data){return;}
-    if(document.getElementById("plot-container").firstChild){
-        document.getElementById("plot-container").removeChild(document.getElementById("plot-container").firstChild);
-    }
     var plot = Plot.plot({
+        height: plot_container.clientHeight,
+        width: plot_container.clientWidth,
         x: {domain: [0, data.length], axis: null},
         y: {domain: [0, 256], axis: null},
         marks: [
@@ -40,12 +42,12 @@ function updateGraph(data){
             }),
         ]
     })
-    document.getElementById("plot-container").appendChild(plot);
+    document.getElementById("plot-container").replaceChildren(plot);
 }
 
 function renderGraph(){
     return setInterval(() => {
-        updateGraph(fft.data_frames[0]);
+        updateGraph(fft.data_frames);
     }, fft.update_interval);
 }
 var graph_interval = renderGraph(fft.update_interval);
@@ -57,7 +59,7 @@ var update_rate_knob = document.getElementById("update-rate-knob");
 update_rate_knob.addEventListener("input", function(){
     var interval = 110 - this.value;
     fft.update_interval = interval;
-    fft.performFFT();
+    fft.perform_fft();
     clearInterval(graph_interval);
     graph_interval = renderGraph();
 });
