@@ -1,10 +1,12 @@
 /* visualizer parameters */
-//import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
+//import * as htl from "https://cdn.jsdelivr.net/npm/htl@0.3.1/dist/htl.min.js";
 import {FFT} from "./audio_analysis.js";
 
 var plot_container = document.getElementById("plot-container");
 
+var color_scale = d3.scaleLinear([0, 256], ["green", "red"]);
 
 //****************************************************************************
 // DATA COLLECTION / PROCESSING
@@ -27,18 +29,42 @@ fft.perform_fft();
 function updateGraph(data){
     if(!data){return;}
     var plot = Plot.plot({
+        
         height: plot_container.clientHeight,
         width: plot_container.clientWidth,
         x: {domain: [0, data.length], axis: null},
         y: {domain: [0, 256], axis: null},
+        color: {
+            type: "linear",
+            scheme: "turbo",
+            domain: [0, 256],
+            range: [0, 1]
+        },
         marks: [
             Plot.ruleY([0]),
+            () => htl.svg`<defs>
+      <linearGradient id="gradient" gradientTransform="rotate(90)">
+        <stop offset="0%" stop-color="red"/>
+        <stop offset="50%" stop-color="yellow"/>
+        <stop offset="100%" stop-color="green"/>
+      </linearGradient>
+    </defs>`,
             Plot.lineY(data, {
                 x: "index", 
                 y: "value", 
-                stroke: "lightblue", 
-                fillOpacity: 0.2, 
-                fill: "steelblue"
+                stroke: "url(#gradient)",
+                strokeWidth: 2
+                //fillOpacity: 1.0, 
+                //fill: "url(#gradient)"
+            }),
+            Plot.areaY(data, {
+                x: "index", 
+                y: "value", 
+                //curve: "linear",
+                //stroke: "black", 
+                //strokeWidth: 1,
+                fillOpacity: 1.0, 
+                fill: "url(#gradient)"
             }),
         ]
     })
