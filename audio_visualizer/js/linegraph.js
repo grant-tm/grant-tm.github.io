@@ -23,6 +23,8 @@ const fft = new FFT({
 
 fft.perform_fft();
 
+var color_scale = d3.scaleLinear([0, 256], ["green", "red"]);
+
 //****************************************************************************
 // DATA VISUALIZATION
 //****************************************************************************
@@ -42,21 +44,15 @@ function updateGraph(data){
         },
         marks: [
             Plot.ruleY([0]),
-            () => htl.svg`<defs>
-      <linearGradient id="gradient" gradientTransform="rotate(90)">
-        <stop offset="0%" stop-color="red"/>
-        <stop offset="50%" stop-color="yellow"/>
-        <stop offset="100%" stop-color="green"/>
-      </linearGradient>
-    </defs>`,
             Plot.lineY(data, {
                 x: "index", 
                 y: "value", 
-                stroke: "url(#gradient)",
-                strokeWidth: 2
-                //fillOpacity: 1.0, 
-                //fill: "url(#gradient)"
+                stroke: "steelblue",
+                strokeWidth: 2,
+                fillOpacity: 0.2, 
+                fill: "steelblue"
             }),
+           /*
             Plot.areaY(data, {
                 x: "index", 
                 y: "value", 
@@ -66,6 +62,20 @@ function updateGraph(data){
                 fillOpacity: 1.0, 
                 fill: "url(#gradient)"
             }),
+            (_index, {x, y}) => htl.svg`
+            <defs>
+                <linearGradient 
+                    id="gradient" 
+                    gradientUnit="objectBoundingBox" 
+                    gradientTransform="rotate(90)"
+                    x1="0%"
+                    x2="100%"
+                    >
+                        <stop offset="0%" stop-color=${color_scale(256)}></stop>
+                        <stop offset="100%" stop-color=${y(256)}></stop>
+                </linearGradient>
+            </defs>` 
+            */      
         ]
     })
     document.getElementById("plot-container").replaceChildren(plot);
